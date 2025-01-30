@@ -27,6 +27,21 @@
 
     <p class="text-[#DCDED6]">Do it now. Sometimes “later” becomes “never”</p>
 
-    
+    <div class="mt-10 text-center w-3/4 max-w-lg">
+        <h3 class="text-lg font-semibold">Tasks</h3>
+        <div class="border-t border-white mt-2 pt-4">
+            
+            <form id="taskForm" class="space-y-4">
+                <input id="taskName" type="text" placeholder="Enter task..." class="w-full px-4 py-2 rounded bg-[#859393] text-white focus:outline-none">
+
+              
+                <div class="flex justify-center items-center space-x-4">
+                    <label for="priorityHigh" class="text-white">High</label>
+                    <input id="priorityHigh" type="radio" name="priority" value="High" class="bg-[#859393] text-white focus:outline-none">
+
+                    <label for="priorityLow" class="text-white">Low</label>
+                    <input id="priorityLow" type="radio" name="priority" value="Low" class="bg-[#859393] text-white focus:outline-none">
+                </div>
+
 </body>
 </html>
