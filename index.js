@@ -19,9 +19,11 @@ taskForm.addEventListener('submit', (event) => {
         deleteBtn.classList.add('bg-red-500', 'text-white', 'px-2', 'py-1', 'rounded', 'hover:bg-red-600');
         deleteBtn.textContent = 'Delete';
 
-      
+        deleteBtn.addEventListener('click', () => {
+            taskList.removeChild(li);
+        });
 
-        
+        li.appendChild(deleteBtn);
 
         taskList.appendChild(li);
 
