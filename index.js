@@ -38,7 +38,7 @@ taskForm.addEventListener('submit', (event) => {
 
         
         const deleteBtn = document.createElement('button');
-        deleteBtn.classList.add('bg-[#859393]', 'text-white', 'px-2', 'py-1', 'rounded', 'hover:bg-red-600');
+        deleteBtn.classList.add('bg-[#859393]', 'text-white', 'px-2', 'py-1', 'rounded', 'hover:bg-[#2F3D46]');
         deleteBtn.textContent = 'Delete';
 
         deleteBtn.addEventListener('click', () => {
@@ -85,7 +85,7 @@ document.getElementById('addTaskBtn').addEventListener('click', (event) => {
 
            
             const editBtn = document.createElement('button');
-            editBtn.classList.add('bg-[#859393]', 'text-white', 'px-2', 'py-1', 'rounded', 'hover:bg-yellow-600');
+            editBtn.classList.add('bg-[#859393]', 'text-white', 'px-2', 'py-1', 'rounded', 'hover:bg-[#5D726F]');
             editBtn.textContent = 'Edit';
 
             editBtn.addEventListener('click', () => {
@@ -103,7 +103,7 @@ document.getElementById('addTaskBtn').addEventListener('click', (event) => {
 
            
             const deleteBtn = document.createElement('button');
-            deleteBtn.classList.add('bg-[#859393]', 'text-white', 'px-2', 'py-1', 'rounded', 'hover:bg-red-600');
+            deleteBtn.classList.add('bg-[#859393]', 'text-white', 'px-2', 'py-1', 'rounded', 'hover:bg-[#5D726F]');
             deleteBtn.textContent = 'Delete';
 
             deleteBtn.addEventListener('click', () => {
@@ -139,6 +139,7 @@ const shortBreakBtn = document.getElementById("shortBreakBtn");
 const longBreakBtn = document.getElementById("longBreakBtn");
 
 let tasks = [];
+let task;
 
 function formatTime(seconds) {
     const minutes = Math.floor(seconds / 60);
@@ -189,4 +190,24 @@ longBreakBtn.addEventListener('click', () => {
 
 
 startBtn.addEventListener('click', startPauseTimer);
+
+const restartBtn = document.getElementById('restartBtn');
+
+restartBtn.addEventListener('click', () => {
+   
+    clearInterval(timerInterval);
+    isRunning = false;
+    startBtn.textContent = "START"; 
+
+   
+    timeRemaining = 25 * 60;
+    updateTimerDisplay();
+});
+
+
+localStorage.setItem("tasks", JSON.stringify(tasks));
+
+
+
+
 
