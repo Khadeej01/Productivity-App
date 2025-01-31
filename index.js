@@ -120,3 +120,59 @@ document.getElementById('addTaskBtn').addEventListener('click', (event) => {
     }
 });
 
+document.getElementById('pomodoroBtn').addEventListener('click', () => {
+    timeRemaining = 25 * 60;
+    updateTimerDisplay();
+});
+
+
+
+let timerInterval;
+let isRunning = false;
+let timeRemaining = 25 * 60; 
+let isShortBreak = false;
+let isLongBreak = false;
+
+const timerDisplay = document.getElementById("timer");
+const startBtn = document.getElementById("startBtn");
+const shortBreakBtn = document.getElementById("shortBreakBtn");
+const longBreakBtn = document.getElementById("longBreakBtn");
+
+let tasks = [];
+
+function formatTime(seconds) {
+    const minutes = Math.floor(seconds / 60);
+    const secondsRemaining = seconds % 60;
+    return `${String(minutes).padStart(2, '0')}:${String(secondsRemaining).padStart(2, '0')}`;
+}
+
+function startPauseTimer() {
+    if (isRunning) {
+        clearInterval(timerInterval);
+    } else {
+        timerInterval = setInterval(function() {
+            if (timeRemaining <= 0) {
+                clearInterval(timerInterval);
+                alert("Time's up!");
+                timeRemaining = isShortBreak ? 5 * 60 : isLongBreak ? 15 * 60 : 25 * 60;
+                updateTimerDisplay();
+            } else {
+                timeRemaining--;
+                updateTimerDisplay();
+            }
+        }, 1000);
+    }
+    isRunning = !isRunning;
+    startBtn.textContent = isRunning ? "PAUSE" : "START";
+}
+
+function updateTimerDisplay() {
+    timerDisplay.textContent = formatTime(timeRemaining);
+}
+
+
+
+
+
+startBtn.addEventListener('click', startPauseTimer);
+
