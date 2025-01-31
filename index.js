@@ -171,7 +171,21 @@ function updateTimerDisplay() {
 }
 
 
+shortBreakBtn.addEventListener('click', () => {
+    isShortBreak = true;
+    isLongBreak = false;
+    timeRemaining = 5 * 60; 
+    updateTimerDisplay();
+    if (isRunning) startPauseTimer();  
+});
 
+longBreakBtn.addEventListener('click', () => {
+    isShortBreak = false;
+    isLongBreak = true;
+    timeRemaining = 15 * 60; 
+    updateTimerDisplay();
+    if (isRunning) startPauseTimer();  
+});
 
 
 startBtn.addEventListener('click', startPauseTimer);
