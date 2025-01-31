@@ -16,13 +16,13 @@ taskForm.addEventListener('submit', (event) => {
         taskText.textContent = `${taskDescription} (Priority: ${taskPriority})`;
         li.appendChild(taskText);
 
-        // Edit button
+        
         const editBtn = document.createElement('button');
         editBtn.classList.add('bg-[#859393]', 'text-white', 'px-2', 'py-1', 'rounded', 'hover:bg-yellow-600');
         editBtn.textContent = 'Edit';
 
         editBtn.addEventListener('click', () => {
-            // Set current task for editing
+          
             currentEditTask = li;
             document.getElementById('taskName').value = taskDescription;
             if (taskPriority === 'High') {
@@ -30,13 +30,13 @@ taskForm.addEventListener('submit', (event) => {
             } else {
                 document.getElementById('priorityLow').checked = true;
             }
-            // Change the button to "Save" when editing
+           
             document.getElementById('addTaskBtn').textContent = 'Save Changes';
         });
 
         li.appendChild(editBtn);
 
-        // Delete button
+        
         const deleteBtn = document.createElement('button');
         deleteBtn.classList.add('bg-[#859393]', 'text-white', 'px-2', 'py-1', 'rounded', 'hover:bg-red-600');
         deleteBtn.textContent = 'Delete';
@@ -54,24 +54,24 @@ taskForm.addEventListener('submit', (event) => {
     }
 });
 
-// Handle saving or adding new task
+
 document.getElementById('addTaskBtn').addEventListener('click', (event) => {
     if (currentEditTask) {
-        // Edit mode
+        
         const updatedDescription = document.getElementById('taskName').value;
         const updatedPriority = document.querySelector('input[name="priority"]:checked').value;
 
         const updatedText = `${updatedDescription} (Priority: ${updatedPriority})`;
         currentEditTask.querySelector('span').textContent = updatedText;
 
-        // Reset form and button
+       
         document.getElementById('taskName').value = '';
         document.querySelector('input[name="priority"]:checked').checked = false;
         document.getElementById('addTaskBtn').textContent = 'Submit';
 
         currentEditTask = null;
     } else {
-        // Add new task
+        
         const taskDescription = document.getElementById('taskName').value;
         const taskPriority = document.querySelector('input[name="priority"]:checked') ? document.querySelector('input[name="priority"]:checked').value : 'Low';
 
@@ -83,7 +83,7 @@ document.getElementById('addTaskBtn').addEventListener('click', (event) => {
             taskText.textContent = `${taskDescription} (Priority: ${taskPriority})`;
             li.appendChild(taskText);
 
-            // Edit button
+           
             const editBtn = document.createElement('button');
             editBtn.classList.add('bg-[#859393]', 'text-white', 'px-2', 'py-1', 'rounded', 'hover:bg-yellow-600');
             editBtn.textContent = 'Edit';
@@ -101,7 +101,7 @@ document.getElementById('addTaskBtn').addEventListener('click', (event) => {
 
             li.appendChild(editBtn);
 
-            // Delete button
+           
             const deleteBtn = document.createElement('button');
             deleteBtn.classList.add('bg-[#859393]', 'text-white', 'px-2', 'py-1', 'rounded', 'hover:bg-red-600');
             deleteBtn.textContent = 'Delete';
@@ -119,3 +119,4 @@ document.getElementById('addTaskBtn').addEventListener('click', (event) => {
         }
     }
 });
+
